@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Search Tweets</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="http:////ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script src="require.js"></script>
+    <script language="javascript" type="text/javascript">
+      </script>
+  </head>
+  <body>
+    <div class="search-box">
+      <input type="text" method="get" placeholder="Search Username" value=""  id= "textInput" name="category" for="configuration-query">
+      <script src="main.js"></script>
+      <div class="search-icon">
+        <i class="fas fa-search"></i>
+      </div>
+<div class="cancel-icon">
+        <i class="fas fa-times"></i>
+      </div>
+<div class="search-data">
+</div>
+</div>
+<script>
+      const searchBox = document.querySelector(".search-box");
+      const searchBtn = document.querySelector(".search-icon");
+      const cancelBtn = document.querySelector(".cancel-icon");
+      const searchInput = document.querySelector("input");
+      const searchData = document.querySelector(".search-data");
+
+      $(searchBox).keyup(function(event) {
+       if (event.keyCode === 13) {
+          $(searchBtn).click();
+          }
+         });
+
+      searchBtn.onclick =()=>{
+        searchBox.classList.add("active");
+        searchBtn.classList.add("active");
+        searchInput.classList.add("active");
+        cancelBtn.classList.add("active");
+        searchInput.focus();
+        if(searchInput.value != ""){
+          var values = searchInput.value;
+          searchData.classList.remove("active");
+          searchData.innerHTML = "You just typed " + "<span style='font-weight: 500;'>" + values + "</span>";
+          var values = values.split(' ').join('');
+          //uncomment the below line only to search accounts by user name
+          //window.open("https://twitter.com/"+values,'_blank');
+          //uncomment below line & line no.69--"platform.twitter.com/widget.js" to search by search box in twitter
+          //window.open("https://twitter.com/"+values+"?ref_src=twsrc%5Etfw",$("#twitter-timeline"),"_blank")
+        }
+         else{
+          searchData.textContent = "";
+        }
+      }
+      cancelBtn.onclick =()=>{
+        searchBox.classList.remove("active");
+        searchBtn.classList.remove("active");
+        searchInput.classList.remove("active");
+        cancelBtn.classList.remove("active");
+        searchData.classList.toggle("active");
+        searchInput.value = "";
+      }
+        
+    </script>
+      <!--<script async src="https://platform.twitter.com/widgets.js" charset="utf-8">-->
+          </script>
+  </body>
+</html>
